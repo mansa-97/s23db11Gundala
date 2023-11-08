@@ -24,13 +24,24 @@ console.log("Connection to DB succeeded")});
 async function recreateDB(){
 // Delete everything
 await keepSake.deleteMany();
-let instance1 = new
-keepSake({keep_model:"Photos",keep_cost:50,keep_quantity:2});
+let instance1 = new keepSake({keep_model:"Photos",keep_cost:50,keep_quantity:2});
+let instance2 = new keepSake({keep_model:"Wind chimes",keep_cost:500,keep_quantity:1});
+let instance3 = new keepSake({keep_model:"Jewelery",keep_cost:1000,keep_quantity:4});
 instance1.save().then(doc=>{
 console.log("First object saved")}
 ).catch(err=>{
 console.error(err)
 });
+instance2.save().then(doc=>{
+  console.log("Second object saved")}
+  ).catch(err=>{
+  console.error(err)
+  });
+  instance3.save().then(doc=>{
+    console.log("Third object saved")}
+    ).catch(err=>{
+    console.error(err)
+    });
 }
 let reseed = true;
 if (reseed) {recreateDB();}

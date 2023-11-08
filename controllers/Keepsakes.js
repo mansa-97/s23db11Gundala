@@ -1,8 +1,17 @@
+const Keepsakes = require('../models/Keepsakes');
 var keepSake = require('../models/Keepsakes');
 // List of all Costumes
-exports.keepSake_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Costume list');
-};
+exports.keepSake_list = async function(req, res) {
+    try{
+    theKeepSakes = await Keepsakes.find();
+    res.send(theKeepSakes);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
 // for a specific Costume.
 exports.keepSake_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Costume detail: ' + req.params.id);
