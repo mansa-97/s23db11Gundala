@@ -28,3 +28,15 @@ res.send('NOT IMPLEMENTED: Costume delete DELETE ' + req.params.id);
 exports.keepSake_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
 };
+//VIEWS
+// Handle a show all view
+exports.keepSake_view_all_Page = async function(req, res) {
+try{
+theKeepSakes = await Keepsakes.find();
+res.render('keepSakes', { title: 'keepSakes Search Results', results: theKeepSakes });
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
+};
