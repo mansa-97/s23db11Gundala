@@ -46,13 +46,14 @@ instance2.save().then(doc=>{
 let reseed = true;
 if (reseed) {recreateDB();}
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var KeepRouter = require('./routes/Keepsakes');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
-var resourceRouter = require('./routes/resource') 
+var resourceRouter = require('./routes/resource');
+
+
 var app = express();
 
 // view engine setup
@@ -71,6 +72,7 @@ app.use('/Keepsakes',KeepRouter);
 app.use('/',boardRouter);
 app.use('/choose',chooseRouter);
 app.use('/resource',resourceRouter);
+
 
 app.get('/board', (req, res) => {
   res.render('board');

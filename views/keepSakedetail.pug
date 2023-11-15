@@ -1,0 +1,22 @@
+extends layout
+block content
+ h1= title
+ - let keepSakeid = toShow._id
+ - let keepModel = toShow.keep_model
+ - let keepCost = toShow.keep_cost
+ - let keepQuantity = toShow.keep_quantity
+
+ div
+  div.row
+   div(class='keepSakeAttr mr-3') keepSake ID is:
+   div #{keepSakeid}
+  div.row
+   div(class='keepSakeAttr mr-3') keepSake Model is:
+   div #{keepModel}
+  div.row
+   div(class='keepSakeAttr mr-3') keepSake Cost is:
+   div #{keepCost}
+  div.row
+   div(class='keepSakeAttr mr-3') keepSake Quantity is:
+   div #{keepQuantity}
+

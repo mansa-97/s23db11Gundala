@@ -12,3 +12,6 @@ var router = express.Router();
 router.get('/', keepSake_controlers.keepSake_view_all_Page);
 module.exports = router;
 
+/* GET detail costume page */
+router.get('/detail', keepSake_controlers.keepSake_view_one_Page);
+module.exports = router;
