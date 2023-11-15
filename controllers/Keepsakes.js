@@ -109,3 +109,16 @@ exports.keepSake_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.keepSake_create_page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('keepSakecreate', { title: 'keepSake Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };

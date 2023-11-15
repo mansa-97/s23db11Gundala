@@ -1,0 +1,31 @@
+extends layout
+block content
+  h1= title
+  form(id='keepsakeForm', action="/resource/keepsakes", method="POST")
+    div.form-group
+      label.keepSakeAttr(for='keep_model') KeepSake Model
+      input#keep_type(type='text', name='keep_model')
+    div.form-group
+      label.keepSakeAttr(for='keep_cost') KeepSake Cost
+      input#keep_cost(type='number', name='keep_cost')
+    div.form-group
+      label.keepSakeAttr(for='keep_quantity') KeepSake Quantity
+      input#keep_quantity(type='number', name='keep_quantity')
+    input(type="submit")
+  script.
+    document.forms['keepsakeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error)
+      });
+    });
