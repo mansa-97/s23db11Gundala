@@ -122,3 +122,16 @@ exports.keepSake_create_page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+// Handle building the view for updating a costume.
+// query provides the id
+exports.keepSake_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await keepSake.findById(req.query.id)
+    res.render('keepSakeupdate', { title: 'keepSake Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };

@@ -7,4 +7,6 @@ router.get('/', keepSake_controlers.keepSake_view_all_Page);
 router.get('/detail', keepSake_controlers.keepSake_view_one_Page);
 /* GET create costume page */
 router.get('/create', keepSake_controlers.keepSake_create_page);
+/* GET create update page */
+router.get('/update', keepSake_controlers.keepSake_update_Page);
 module.exports = router;
