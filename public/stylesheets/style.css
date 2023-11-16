@@ -7,7 +7,17 @@ a {
   color: #00B7FF;
 }
 .keepSakeAttr {
-  background-color: aquamarine;
+  background-color: lavender;
+  color:magenta;
   width: 120px;
   }
-  
+#keepsakeForm {
+  background-color: plum;
+  width:80px;
+  font-family: 'Courier New', Courier, monospace;
+  }
+h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  color:lightseagreen;
+  font-size: 45px;
+  }
