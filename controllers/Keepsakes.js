@@ -135,3 +135,16 @@ exports.keepSake_update_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
     };
+// Handle a delete one view with id from query
+exports.keepSake_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await keepSake.findById(req.query.id)
+    res.render('keepSakedelete', { title: 'keepSake Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };

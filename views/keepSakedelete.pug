@@ -1,0 +1,54 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let keepSakeid = toShow._id
+    - let keep_model = toShow.keep_model
+    - let keep_cost = toShow.keep_cost
+    - let keep_quantity = toShow.keep_quantity
+    - let actionid = "/resource/keepSakes/" + keepSakeid
+    script.
+      let actionid = "#{actionid}"
+    div
+      div.row
+        div(class='keepSakeAttr mr-3') KeepSake ID is:
+        div #{keepSakeid}     
+      div.row
+        div(class='keepSakeAttr mr-3') KeepSake Model is:
+        div #{keep_model}
+      
+      div.row
+        div(class='keepSakeAttr mr-3') KeepSake Cost is:
+        div #{keep_cost}
+      
+      div.row
+        div(class='keepSakeAttr mr-3') KeepSake Quantity is:
+        div #{keep_quantity}
+      
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+      
+      script.
+        function cancel() {
+          // Go back to the home page for the costume collection
+          window.location.href='/keepsakes'
+        }
+      script.
+        function deleteOnid() {
+          console.log("starting delete")
+          // delete first
+          fetch(actionid, {
+            method: 'DELETE' // Don't need a body for the delete
+          }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+          }).then((body) => {
+            alert("Delete succeeded")
+            window.location.href='/keepsakes'
+            // TODO handle body
+          }).catch((error) => {
+            // TODO handle error
+            alert("Delete failed " + error )
+          });
+        }
