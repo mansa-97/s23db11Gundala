@@ -7,8 +7,17 @@ router.get('/', keepSake_controlers.keepSake_view_all_Page);
 router.get('/detail', keepSake_controlers.keepSake_view_one_Page);
 /* GET create costume page */
 router.get('/create', keepSake_controlers.keepSake_create_page);
+// A little function to check if we have an authorized user and continue on
+//or
+// redirect to login.
+const secured = (req, res, next) => {
+    if (req.user){
+        return next();
+    }
+    res.redirect("/login");
+}
 /* GET create update page */
-router.get('/update', keepSake_controlers.keepSake_update_Page);
+router.get('/update',secured,keepSake_controlers.keepSake_update_Page);
 /* GET delete costume page */
 router.get('/delete', keepSake_controlers.keepSake_delete_Page);
 module.exports = router;
