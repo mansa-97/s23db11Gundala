@@ -2,13 +2,19 @@ extends layout
 block content
   h1= title
   - let Keepsakes=[{keep_model:"Photos",keep_cost:50,keep_quantity:2},{keep_model:"Wind chimes",keep_cost:500,keep_quantity:1},{keep_model:"Jewelry",keep_cost:1000,keep_quantity:4}]
+  - let destination1 = `/keepsakes/create`
+  button.btn(class="btn-dark ml-1", onclick=`dispatch('${destination1}')`) Create
   div(class="container-fluid")
     div(class="row m-1")
       each K in results
         - let destination = `/keepsakes/update?id=${K._id}`
+        - let destination2 = `/keepsakes/detail?id=${K._id}`
+        - let destination3 = `/keepsakes/delete?id=${K._id}`
         div(class="row-sm-2", class="m-1")
           | #{K.keep_model}, #{K.keep_cost}, #{K.keep_quantity} 
-          button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
+          button.btn(class="btn-info ml-1", onclick=`dispatch('${destination}')`) Update
+          button.btn(class="btn-secondary ml-1", onclick=`dispatch('${destination2}')`) View
+          button.btn(class="btn-success ml-1", onclick=`dispatch('${destination3}')`) Delete
     script.
       function dispatch(path){
         window.location.href = path;
